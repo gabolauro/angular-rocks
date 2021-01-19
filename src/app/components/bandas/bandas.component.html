@@ -1,0 +1,55 @@
+<div class="card-columns">
+
+
+  <div class="card bg-dark">
+    <div class="card-body">
+    	<h5 class="card-title">Cargar nueva banda</h5>
+
+      	<div class="form-group">
+
+	    <input
+	    type="text"
+	    class="form-control"
+	    id="nombre"
+	    #nombre
+	    placeholder="Insertar nombre">
+
+	  </div>
+	  <div class="form-group">
+
+	    <textarea
+	    class="form-control"
+	    id="descripcion"
+	    #descripcion
+	    aria-describedby="descripcionBanda"
+	    placeholder="Insertar descripcion"
+	    ></textarea>
+	    <small id="descripcionBanda" class="form-text text-muted">Breve descripción de la banda</small>
+	  
+	  </div>
+	  <div class="form-group">
+
+	    <input
+	    type="text"
+	    class="form-control"
+	    id="imagen"
+	    #imagen
+	    aria-describedby="imagenBanda"
+	    placeholder="URL"
+	    >
+	    <small id="imagenBanda" class="form-text text-muted">Pega la URL de la imagen de la banda.</small>
+	  </div>
+
+	  <button
+	  type="submit"
+	  class="btn btn-primary btn-block"
+	  (click)="cargarBanda(nombre.value, descripcion.value, imagen.value)"
+	  >
+	  <i class="fa fa-plus"></i>
+	Cargar</button>
+    </div>
+  </div>
+
+  <app-tarjetas [items]="bandasService.bandas"></app-tarjetas>
+
+</div>

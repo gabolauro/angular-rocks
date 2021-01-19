@@ -1,0 +1,15 @@
+  <div class="card bg-dark" *ngFor="let banda of items">
+  	<button
+  	(click)="borrarBanda(banda)"
+  	class="btn btn-sm btn-dark btn-eliminar"><i class="fa fa-remove"></i></button>
+
+    <img class="card-img-top" src="{{banda.imageurl}}" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">{{banda.nombre}}</h5>
+      <p class="card-text">{{banda.detalle | subtext}}</p>
+
+      <button
+      (click)="bandaSeleccionada( banda )"
+      class="btn btn-light btn-block">Ver mas detalles</button>
+    </div>
+  </div>
