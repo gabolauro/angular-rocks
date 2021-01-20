@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { BandasComponent } from './components/bandas/bandas.component';
 import { BandaComponent } from './components/banda/banda.component';
-import { AgregarComponent } from './components/agregar/agregar.component';
 import { BuscarComponent } from './components/buscar/buscar.component';
 
 

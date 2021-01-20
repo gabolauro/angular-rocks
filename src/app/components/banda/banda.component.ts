@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BandasService } from '../../services/bandas.service';
 import { SeoService } from '../../services/seo.service';
+import { SpotifyService } from '../../services/spotify.service';
 import { Banda } from '../../models/banda.model';
 
 @Component({
@@ -13,17 +14,21 @@ export class BandaComponent implements OnInit {
 
   banda: Banda[] = [];
 
+  topTracks: any[] = [];
+
   text: string[]
 
   constructor(
   	public bandasService: BandasService,
   	private router: ActivatedRoute,
-    private seo: SeoService
+    private seo: SeoService,
+    private spotify: SpotifyService
   	) { 
 
   		this.router.params.subscribe( params => {
 
 	  		this.getBanda( params['id'] )
+        this.buscarBanda(this.banda[0].nombre)
 
 	  	});
 
@@ -35,6 +40,26 @@ export class BandaComponent implements OnInit {
     console.log(this.banda)
 
   }
+
+  buscarBanda(termino:string) {
+
+    this.spotify.getArtistas( termino )
+    .subscribe( (data: any) => {
+
+
+      // console.log(data[0]);
+
+      this.spotify.getTopTracks( data[0].id )
+        .subscribe( topTracks => {
+          // console.log(topTracks);
+          this.topTracks = topTracks;
+        });
+
+
+    }); 
+
+  
+  };
 
 
 

@@ -1,3 +1,7 @@
 p {
 	white-space: break-spaces;
 }
+
+table img {
+	max-height: 60px;
+}

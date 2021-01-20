@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { HttpClientModule } from '@angular/common/http';
+
 //Componentes
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -15,6 +17,7 @@ import { BreaklinePipe } from './pipes/breakline.pipe';
 //Rutas
 import { AppRoutingModule } from './app-routing.module';
 import { SubtextPipe } from './pipes/subtext.pipe';
+import { DomseguroPipe } from './pipes/domseguro.pipe';
 
 @NgModule({
   declarations: [
@@ -26,10 +29,12 @@ import { SubtextPipe } from './pipes/subtext.pipe';
     BuscarComponent,
     LoadingComponent,
     BreaklinePipe,
-    SubtextPipe
+    SubtextPipe,
+    DomseguroPipe
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule
   ],
   providers: [],
