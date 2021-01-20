@@ -27,7 +27,7 @@ export class TarjetasComponent implements OnInit {
 
   borrarBanda(banda: Banda) {
 
-    console.log(banda)
+    // console.log(banda)
     
     const eliminarBanda = this.bandasService.borrarBanda( banda );
     

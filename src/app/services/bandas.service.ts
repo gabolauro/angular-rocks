@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Banda } from '../models/banda.model';
+import * as dataBandas from '../components/bandas/dataBandas.json'; // Para carga de bandas predeterminadas
 
 @Injectable({
   providedIn: 'root'
@@ -10,14 +11,21 @@ export class BandasService {
 
   constructor() {
 
-  	// const banda1 = new Banda('Led Zepelling', 'Descripcion', 'https://i.pinimg.com/originals/43/bf/a8/43bfa8b3082c6c79fdf50000a95c7050.jpg');
-   //  const banda2 = new Banda('Deep Purple', 'Descripcion', 'https://static.wikia.nocookie.net/logopedia/images/f/f6/Deep_Purple_logo2.jpg');
 
-   //  this.bandas.push(banda1, banda2);
+    this.cargarStorage();
 
-    // console.log(this.bandas)
+    if (this.bandas.length>0) {
 
-    this.cargarStorage()
+      // console.log('Toma los datos del local storage')
+
+    } else {
+
+      this.bandas = dataBandas['default'];
+      this.guardarStorage();
+      // console.log('Toma los datos del archivo json, y lo guarda en el local storage')
+
+    }
+
 
    }
 

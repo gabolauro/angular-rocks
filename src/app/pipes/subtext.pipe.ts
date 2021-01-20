@@ -7,7 +7,7 @@ export class SubtextPipe implements PipeTransform {
 
   transform(text: string): string {
 
-    let parrafos = text.split('</br>');
+    let parrafos = text.split('.');
     return parrafos[0];
   }
 

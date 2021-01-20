@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { BandasComponent } from './components/bandas/bandas.component';
 import { BandaComponent } from './components/banda/banda.component';
-import { AgregarComponent } from './components/agregar/agregar.component';
 import { TarjetasComponent } from './components/tarjetas/tarjetas.component';
 import { BuscarComponent } from './components/buscar/buscar.component';
 import { LoadingComponent } from './components/loading/loading.component';
@@ -23,7 +22,6 @@ import { SubtextPipe } from './pipes/subtext.pipe';
     NavbarComponent,
     BandasComponent,
     BandaComponent,
-    AgregarComponent,
     TarjetasComponent,
     BuscarComponent,
     LoadingComponent,
