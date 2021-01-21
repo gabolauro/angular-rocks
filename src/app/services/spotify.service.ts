@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import * as Cookies from 'js-cookie';
 
 import { map } from 'rxjs/operators';
 
@@ -8,23 +9,53 @@ import { map } from 'rxjs/operators';
 })
 export class SpotifyService {
 
+  tokenSpotify: string;
+
 
   constructor( private http: HttpClient ) { 
 
   	console.log('Servicio Spotify incluido');
 
+    if (Cookies.get('spotifyToken')===undefined) {
+      this.getToken().subscribe( (data: any) => {
+         // console.log(data);
+         this.tokenSpotify =  data['access_token']
+         // console.log(this.tokenSpotify);
+         Cookies.set('spotifyToken', this.tokenSpotify, { expires: 1/24 });
+
+       });
+    }
+
+    this.tokenSpotify = Cookies.get('spotifyToken');
+
+    
+
+ 
+   
    }
+
+
 
    getQuery( query: string ) {
 
      const url = `https://api.spotify.com/v1/${ query }`;
 
+     
+     // console.log(tokenSpotify)
+
      const headers = new HttpHeaders({
-       'Authorization': 'Bearer BQAPjeE6nZ0avT17eeKibJOD8wGlKGAnPagb7YvlWEPqX5LV-dFhfq1CUB1a86PgzGWgCUFhxVQqizKdsTyaFOyqkF1Aga-z68X5d95rhR4zTUesZAlN3-rz7N_Qlj411tm4ryujGV0VDNXDbRArtc7MKQ3kMihYijFnL26t49RBK5DoyoIHp_UiwU-mtnidncjfxsFhpRYlMytSp1-02mYthpjOF7edFAG5zn2oa-U4ZvVvbk3nJI7OlM3bNMKxhMItDJgBD5AQaxs1ivgWV0ibq0AvEN8OOpIuxEY'
+       'Authorization': 'Bearer '+this.tokenSpotify
 
 
      });
      return this.http.get(url, {headers});
+
+   }
+
+   getToken() {
+
+     return this.http.get('https://spotify-get-token.herokuapp.com/spotify/391035a0ee5c49f99ace1d55a7818d0a/50f6b41b560a415e80ad10c9a3c678db').pipe( map( data => data));;
+
 
    }
 

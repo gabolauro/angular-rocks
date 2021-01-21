@@ -18,7 +18,9 @@ export class BandasComponent implements OnInit {
   constructor(
     public bandasService: BandasService,
     private seo: SeoService
-    ) { }
+    ) {
+
+  }
 
   cargarBanda(nombre, descripcion, imagen) {
     

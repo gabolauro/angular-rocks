@@ -30,14 +30,18 @@ export class BandaComponent implements OnInit {
 	  		this.getBanda( params['id'] )
         this.buscarBanda(this.banda[0].nombre)
 
+
 	  	});
 
   	 }
 
+
+
+
   getBanda(id: string) {
 
   	this.banda = this.bandasService.getBanda( id )
-    console.log(this.banda)
+    // console.log(this.banda)
 
   }
 
@@ -53,6 +57,7 @@ export class BandaComponent implements OnInit {
         .subscribe( topTracks => {
           // console.log(topTracks);
           this.topTracks = topTracks;
+
         });
 
 
@@ -72,6 +77,7 @@ export class BandaComponent implements OnInit {
       image: this.banda[0].imageurl,
       slug: `banda/${this.banda[0].id}`
     })
+
 
   }
 }
