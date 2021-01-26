@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { BandasService } from '../../services/bandas.service';
 import { SeoService } from '../../services/seo.service';
+import { SpotifyService } from '../../services/spotify.service';
 import { Banda } from '../../models/banda.model';
 
 @Component({
@@ -17,7 +18,8 @@ export class BandasComponent implements OnInit {
 
   constructor(
     public bandasService: BandasService,
-    private seo: SeoService
+    private seo: SeoService,
+    private spotify: SpotifyService
     ) {
 
   }
